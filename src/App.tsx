@@ -17,7 +17,7 @@ export type Tasks = {
 
 export const App: FC = () => {
     const [value, setValue] = useState<Value>(new Date())
-    // const [exercise, setExercise] = useState({})
+
 
     const onChange = useCallback(
         (val: Value) => {
@@ -28,11 +28,7 @@ export const App: FC = () => {
     return (
         <>
             <Calendar onChange={onChange} value={value} />
-            <Todos
-                date={value.toLocaleString().split(',')[0]}
-                // exercise={exercise}
-                // setExercise={setExercise}
-            />
+            <Todos date={value.toLocaleString().split(',')[0]} />
         </>
     )
 }

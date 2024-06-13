@@ -1,8 +1,4 @@
 import '../toDo/ToDos.css'
-
-// import { nanoid } from 'nanoid';
-// import { Tasks } from '../../App'
-// import { useSelector } from 'react-redux';
 import { FC, useState } from 'react'
 import { useAppDispatch } from '../../store/store'
 import { useAppSelector } from '../../store/store'
@@ -12,16 +8,8 @@ import {
     removeTask,
     toggleTask,
 } from '../../store/toDoSlice'
-
 export const Todos: FC<{
-    date: string
-    // exercise: Tasks;
-    // setExercise: any
-}> = ({
-    date,
-    // exercise,
-    // setExercise,
-}) => {
+    date: string}> = ({ date}) => {
     const [todo, setTodo] = useState('')
     const [saveEdit, setSaveEdit] = useState('')
 
@@ -29,14 +17,6 @@ export const Todos: FC<{
     const todoList = useAppSelector((state) => state.list)
 
     const addExercise = () => {
-        // if (todo && exercise[date]) {
-        //   exercise[date].push({ id: nanoid(), value: todo, completed: false });
-        // } else if (todo) {
-        //   setExercise({
-        //     ...exercise,
-        //     [date]: [{ id: nanoid(), value: todo, completed: false }],
-        //   });
-        // }
         if (todo) {
             dispatch(addTask({ date, todo }))
         }
@@ -50,15 +30,9 @@ export const Todos: FC<{
         }
     }
     const toggle = (id: string) => {
-        // const newExercise = exercise[date].map((el) =>
-        //     el.id === id ? { ...el, completed: !el.completed } : { ...el }
-        // )
-        // setExercise({ ...exercise, [date]: newExercise })
         dispatch(toggleTask({ date, id }))
     }
     const removeItem = (id: string) => {
-        // const del = exercise[date].filter((el) => el.id !== id)
-        // setExercise({ ...exercise, [date]: del })
         dispatch(removeTask({ date, id }))
     }
     const editTodo = (item: { value: string; id: string }) => {
@@ -68,14 +42,7 @@ export const Todos: FC<{
 
     const handleEditTodo = (item: { value: string; id: string }) => {
         if (saveEdit) {
-            // const saveExercise = exercise[date].map((item) =>
-            //     item.id === saveEdit
-            //         ? { ...item, value: todo, completed: false }
-            //         : item
-            // )
-            // setExercise({ ...exercise, [date]: saveExercise })
             dispatch(editTask({ date, id: item.id, value: item.value }))
-
             setTodo('')
             setSaveEdit('')
         }
