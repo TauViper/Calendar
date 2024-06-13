@@ -1,0 +1,13 @@
+.Item__Todo{
+    display: flex;
+}
+.Item__Li{
+    cursor: pointer;
+    list-style-type: none;
+}
+.Item__Li_done{
+    cursor: pointer;
+    list-style-type: none;
+    text-decoration: line-through;
+
+}
