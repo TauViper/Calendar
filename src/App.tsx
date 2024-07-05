@@ -5,6 +5,7 @@ import '@natscale/react-calendar/dist/main.css'
 import { Todos } from './components/toDo/ToDos.tsx'
 import { Calendar } from '@natscale/react-calendar'
 import { Value } from '@natscale/react-calendar/dist/utils/types'
+import {SignUp} from "./components/signUp/SignUp.tsx";
 
 export interface todo {
     id: string
@@ -27,6 +28,7 @@ export const App: FC = () => {
     )
     return (
         <>
+            <SignUp />
             <Calendar onChange={onChange} value={value} />
             <Todos date={value.toLocaleString().split(',')[0]} />
         </>

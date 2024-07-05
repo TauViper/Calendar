@@ -9,6 +9,7 @@ const initialState: Tasks = {}
 export const toDoSlice = createSlice({
     name: 'todos',
     initialState,
+
     reducers: {
         addTask: (
             state: Tasks,
@@ -24,8 +25,6 @@ export const toDoSlice = createSlice({
                     { id: nanoid(), value: todo, completed: false },
                 ]
             }
-
-            console.log(state.date)
         },
         toggleTask: (
             state: Tasks,
@@ -49,7 +48,7 @@ export const toDoSlice = createSlice({
         ) => {
             const { date, id, value } = action.payload
             state[date] = state[date].map((el) =>
-                el.id === id ? { ...el, value } : { ...el }
+                el.id === id ? { ...el, value, completed: false } : { ...el }
             )
         },
     },
